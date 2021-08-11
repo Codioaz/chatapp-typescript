@@ -1,0 +1,11 @@
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin font($fontSize, $fontWeight) {
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    font-family: $fontNovo;
+}

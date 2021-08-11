@@ -1,3 +1,30 @@
-.body{
-    background-color: #f5f6fa;
+*{
+    transition: all .2s;
+}
+body{
+    background-color: $color-white;
+    font-family: $fontNovo !important;
+}
+
+
+//Scroll bar
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+::-webkit-scrollbar-track {
+    background:$color-white;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background:$color-blue;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    // background: $color-bg-green;
+    // @include respond(phone){
+    //     display: none;
+    // }
+
 }

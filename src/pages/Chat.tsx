@@ -1,8 +1,12 @@
 import React from 'react'
+import ChatContent from '../components/chat/ChatContent'
+import Container from '../components/layout/container'
 
 const Chat:React.FC = () => {
     return(
-        <h1>Chat</h1>
+        <Container>
+            <ChatContent/>
+        </Container>
     )
 }
 

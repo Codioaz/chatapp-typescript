@@ -1,0 +1,44 @@
+.home-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+
+    &__title {
+        margin-bottom: 240px;
+        h1 {
+            @include font(45px, 400);
+            color: $color-dark;
+            text-transform: capitalize;
+            margin-bottom: 40px;
+            span {
+                color: $color-blue;
+                @include font(50px, 700)
+            }
+        }
+
+        p {
+            @include font(20px, 400);
+            color: $color-dark;
+        }
+
+        button {
+            width: 200px;
+            height: 60px;
+            color: white;
+            @include font(25px, 700);
+            border-radius: 4px;
+            border: none;
+            margin-top: 20px;
+            background-color: $color-blue;
+            cursor: pointer;
+
+            &:hover{
+                color: $color-blue;
+                background-color: transparent;
+                border: 2px solid $color-blue;
+            }
+
+        }
+    }
+}

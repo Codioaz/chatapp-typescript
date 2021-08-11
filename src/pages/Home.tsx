@@ -1,17 +1,21 @@
 import React from 'react'
-import { connect, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+import HomeContent from '../components/home/HomeContent';
 import Container from '../components/layout/container';
-
+import Auth from '../modal/auth/AuthModal';
+import {getRegisterAuth} from '../store/action/auth' 
 const Home:React.FC = (props:any) => {
 
     // const Data = useSelector((state) => state)
-    console.log(props);
     
     return(
         <Container>
-            <h1>Home</h1>
+            <HomeContent/>
+            {/* <Auth /> */}
         </Container>
     )
 }
 let mapStateToProps = (state:any) => ({state})
-export default connect(mapStateToProps,null)(Home)
+export default connect(mapStateToProps,{
+    getRegisterAuth
+})(Home)
