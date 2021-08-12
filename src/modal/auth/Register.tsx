@@ -1,11 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import * as aiIcon from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import { useDispatch } from 'react-redux';
 import * as Yup from "yup";
-import { AuthType } from '../../interface/auth.model';
-import { GET_SIGNUP_PAGE } from '../../store/type';
+import { RegisterType } from '../../interface/auth.model';
 
 //VALIDATE MESSAGES
 const UserLogin = Yup.object().shape({
@@ -25,22 +23,17 @@ const UserLogin = Yup.object().shape({
 
 
 
-const Register: React.FC<AuthType> = (props) => {
+const Register: React.FC<RegisterType> = (props) => {
 
     const [viewPassword, setPasswordView] = useState(false)
-    const dispatch = useDispatch()
-  const incrementCounter = useCallback(
-    () => dispatch({ type: 'GET_SIGNUP_PAGE' }),
-    [dispatch]
-  )
+
     return (
         <div className="auth-form">
-            <Formik initialValues={{ firstname: "", lastname: "", username: "", password: "" }}
+            <Formik initialValues={{ first_name: "", last_name: "", username: "", password: "" }}
                 validationSchema={UserLogin}
                 onSubmit={(values) => {
-                    // props.getLoginAuth(values)
-                    console.log(values);
-                    incrementCounter()
+                    props.getRegisterAuth(values)
+                    
                 }}>
 
 
@@ -53,11 +46,11 @@ const Register: React.FC<AuthType> = (props) => {
                             </div>
                             <div className="form-group">
                                 <aiIcon.AiOutlineUser className='joinIcon' />
-                                <Field name='firstname' type="text" placeholder='First name' />
+                                <Field name='first_name' type="text" placeholder='First name' />
                                 <p><ErrorMessage name="username" /></p>
                             </div>     <div className="form-group">
                                 <aiIcon.AiOutlineUser className='joinIcon' />
-                                <Field name='lastname' type="text" placeholder='Last name' />
+                                <Field name='last_name' type="text" placeholder='Last name' />
                                 <p><ErrorMessage name="username" /></p>
                             </div>
                             <div className="form-group">
@@ -78,7 +71,7 @@ const Register: React.FC<AuthType> = (props) => {
                                 </span>
                             </div>
 
-                            <button type="button"> Continue </button>
+                            <button type="submit"> Continue </button>
                             <span onClick={props.setRegisterPopup} className="register-login">Login now </span>
 
                         </div>

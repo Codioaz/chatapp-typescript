@@ -1,7 +1,14 @@
+import { connect } from 'react-redux'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../img/logo192.png'
-const Header: React.FC = () => {
+import { setOpenClosePanel } from '../../store/action/auth'
+import { HeaderType } from '../../interface/header.model'
+
+const Header: React.FC<HeaderType> = (props:any) => {
+
+    const {user } = props.state.usersInfo
+
     return (
         <header className="header">
             <NavLink to={'/'}>
@@ -11,21 +18,35 @@ const Header: React.FC = () => {
                 </div>
             </NavLink>
             <div className="header__auth">
-                {/* <div className="header__auth__user">
-                    Hello, <span>Sarkhan</span>
-                    <picture className="user-image">SR</picture>
-                </div> */}
-                <div className="header__auth__login">
-                    <button>
-                        Login
-                    </button>
-                </div>
+                {user
+                    ?
+                    <div className="header__auth__user">
+                        Hello, <span>{user.first_name}</span>
+                        <picture className="user-image">
+                            {user.first_name[0]}
+                            {user.last_name[0]}
+                            </picture>
+                    </div>
+                    :
+                    <div className="header__auth__login">
+                        <button onClick={() => props.setOpenClosePanel(true)}>
+                            Login
+                        </button>
+                    </div>
+                }
+
+
             </div>
         </header>
     )
 }
 
-export default Header
+const mapStateToProps = (state: any) => ({ state })
+export default connect(mapStateToProps,
+    {
+        setOpenClosePanel
+    }
+)(Header)
 
 
 

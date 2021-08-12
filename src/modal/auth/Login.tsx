@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as aiIcon from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import * as Yup from "yup";
-import { AuthType } from '../../interface/auth.model';
+import { LoginType } from '../../interface/auth.model';
 
 //VALIDATE MESSAGES
 const UserLogin = Yup.object().shape({
@@ -23,7 +23,7 @@ const UserLogin = Yup.object().shape({
 
 
 
-const Login: React.FC <AuthType> = (props) => {
+const Login: React.FC <LoginType> = (props) => {
 
     const [viewPassword, setPasswordView] = useState(false)
     return (
@@ -31,9 +31,8 @@ const Login: React.FC <AuthType> = (props) => {
             <Formik initialValues={{ username: "", password: "" }}
                 validationSchema={UserLogin}
                 onSubmit={(values) => {
-                    // props.getLoginAuth(values)
+                    props.getLoginAuth(values)
                     console.log(values);
-
                 }}>
 
 

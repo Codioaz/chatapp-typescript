@@ -4,6 +4,16 @@
     justify-content: space-between;
 }
 
+.userID{
+    background-color: $color-blue;
+    width: 80px;
+    height: 80px;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    margin-top: 25px !important;
+}
+
 .users-content {
     width: 25%;
     height: 565px;
@@ -39,6 +49,13 @@
     }
 }
 
+.active-user{
+    background-color: $color-blue !important;
+    color: white !important;
+    width: 100%;
+    height: 60px;
+
+}
 .user-card {
     height: 60px;
     padding: 10px;
@@ -46,7 +63,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-
+    text-decoration: none !important;
+    color: $color-dark !important;
     &:not(:last-child) {
         border-bottom: 1px solid #EDEDED;
     }
@@ -78,17 +96,22 @@
 
 .messages-content {
     width: 66%;
-    height: 550px;
+    height: 600px;
     background-color: white;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.062);
     border-radius: 5px;
-    padding: 15px 30px;
+    padding: 0 30px;
+    padding-top: 50px;
 
     &__user {
         height: 80px;
         border-bottom: 1px solid #EDEDED;
     }
 
+    .editInput{
+        background-color: white !important;
+        border: 1px solid $color-blue !important;
+    }
     &__area {
         height: 360px;
         overflow-y: scroll;
@@ -103,7 +126,7 @@
             align-items: flex-end;
             justify-content: flex-start;
             margin-top: 35px;
-            p{
+            input{
                 width: 47%;
                 height: 80%;
                 margin-bottom: 20px;
@@ -130,13 +153,16 @@
             display: flex;
             margin-top: 35px;
             align-items: flex-end;
+            position: relative;
             justify-content: flex-end;
-            p{
+            input{
                 width: 47%;
                 height: 80%;
                 margin-bottom: 20px;
                 padding: 10px;
                 line-height: 20px;
+                border: none;
+                outline: none;
                 background-color: $color-blue-light-1;
                 border-radius: 20px 20px 0 20px ;
             }
@@ -190,6 +216,38 @@
             &:hover{
                 transform: scale(1.05);
             }
+        }
+    }
+}
+
+.dropdown-mes{
+    width: 80px;
+    height: 20px;
+    display: flex;
+    position: absolute;
+    top: 81%;
+    border-radius: 5px;
+    right: 0;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    button{
+        background-color: transparent;
+        border:none;
+        outline: none;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+        &:first-child{
+            color: rgb(0, 128, 64);
+        }
+    }
+
+    button{
+        &:last-child{
+            color: rgb(224, 39, 39);
         }
     }
 }

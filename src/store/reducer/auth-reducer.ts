@@ -2,7 +2,7 @@ import * as type from "../type";
 
 
 let initialState = {
-    auth: localStorage.getItem('token'),
+    authToken: localStorage.getItem('token'),
     openLoginPage: null,
     closeSignUpPage: null,
 }
@@ -13,7 +13,7 @@ export const authenReduser = (state = initialState, action: any) => {
 
         case type.IS_AUTH:
             return {
-                ...state, auth: action.payload
+                ...state, authToken: action.payload
             }
 
         case type.GET_LOGIN_PAGE:
