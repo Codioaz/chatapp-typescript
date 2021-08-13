@@ -23,9 +23,9 @@ const Home: React.FC = (props: any) => {
     }, [user,authToken])
     return (
         <Container>
-            <HomeContent />
+            <HomeContent setOpenClosePanel={props.setOpenClosePanel}/>
             {openLoginPage && <Auth getLoginAuth={props.getLoginAuth} getRegisterAuth={props.getRegisterAuth} setOpenClosePanel={props.setOpenClosePanel} />}
-        </Container>
+        </Container> 
     )
 }
 

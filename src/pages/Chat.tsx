@@ -13,7 +13,7 @@ const Chat: React.FC = (props: any) => {
     const { user, users, messages, userMessageID } = props.state.usersInfo
     const recipientID = props.location.pathname.split('=')[1]
 
-    console.log(recipientID);
+    console.log(messages);
 
     useEffect(() => {
         authToken && props.checkToken(authToken);
@@ -35,6 +35,7 @@ const Chat: React.FC = (props: any) => {
                 postMessage={props.postMessage}
                 deleteMessage={props.deleteMessage}
                 putMessage={props.putMessage}
+                userID={user}
                 users={users} />
         </Container>
     )

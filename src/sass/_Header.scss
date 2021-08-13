@@ -23,13 +23,39 @@
 
     &__auth {
         @include center;
-
+        position: relative;
         &__user {
             @include font(18px, 400);
-
+            cursor: pointer;
             span {
                 color: $color-blue;
                 @include font(18px, 700)
+            }
+        }
+        .logout-show{
+            top: 80% !important;
+            opacity: 1 !important;
+            z-index: 99 !important;
+        }
+
+        .logout-content{
+            position: absolute;
+            top: 150%;
+            right: 0;
+            opacity: 0;
+            z-index: -99;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            @include center;
+            background-color: $color-blue;
+            color: white;
+
+            &:hover{
+                transform: scale(1.08);
+            }
+            svg{
+                margin-right: 5px;
             }
         }
 

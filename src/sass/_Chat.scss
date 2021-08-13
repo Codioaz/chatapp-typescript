@@ -52,7 +52,7 @@
 .active-user{
     background-color: $color-blue !important;
     color: white !important;
-    width: 100%;
+    width: 90%;
     height: 60px;
 
 }
@@ -70,7 +70,7 @@
     }
 
     &:hover {
-        padding-left: 40px;
+        transform: scale(1.05);
     }
 
     &__image {
@@ -115,6 +115,7 @@
     &__area {
         height: 360px;
         overflow-y: scroll;
+        overflow-x: hidden;
         padding-top: 40px;
         display: flex;
         flex-direction: column;
@@ -125,7 +126,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-start;
-            margin-top: 35px;
+            margin: 35px;
             input{
                 width: 47%;
                 height: 80%;
@@ -151,7 +152,7 @@
             height: 100px;
             width: 100%;
             display: flex;
-            margin-top: 35px;
+            margin-top: 100px !important;
             align-items: flex-end;
             position: relative;
             justify-content: flex-end;
@@ -225,9 +226,9 @@
     height: 20px;
     display: flex;
     position: absolute;
-    top: 81%;
+    top: -86%;
     border-radius: 5px;
-    right: 0;
+    right: 0%;
     justify-content: space-evenly;
     align-items: flex-start;
     button{

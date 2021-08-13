@@ -10,16 +10,17 @@ const UserMessage: React.FC<any> = (props) => {
 
     const [text, setTextRange] = useState('')
 
-    const recipientID = props.location.pathname.split('=')[1]
+    // const recipientID = props.location.pathname.split('=')[1]
 
-    console.log(props.message);
+    // console.log(props.message);
 
     const handleSubmit = (data: object) => {
 
         const formData = {
-            recipient: recipientID,
+            recipient: props.userMessageID,
             title: 'Mes',
             body: text,
+            user:props.userID.id,
         }
 
         props.postMessage(formData)
@@ -30,24 +31,21 @@ const UserMessage: React.FC<any> = (props) => {
     return (
         <div className="messages-content">
             <div className="messages-content__user">
-                <span className="userID">Chat: {recipientID}</span>
+                <span className="userID">Chat: {props.userMessageID}</span>
             </div>
             <div className="messages-content__area">
                 {props.message && props.message.map((mes: any,) => (
                     <InputText
                         mesID={mes.id}
+                        userID={props.userID}
                         mesBody={mes.body}
-                        recipientID={recipientID}
+                        userMessageID={mes.user}
                         putMessage={props.putMessage}
                         deleteMessage={props.deleteMessage}
+                        mesRecName={mes.recipient}
                     />
 
-                    // <div className="left-mes">
-                    //     <p>
-                    //         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, voluptates! Sapiente
-                    //     </p>
-                    //     <span>SR</span>
-                    // </div>
+                
 
                 ))}
 
