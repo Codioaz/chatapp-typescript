@@ -46,7 +46,9 @@
             z-index: -99;
             width: 100px;
             height: 50px;
+            margin-top: 22px;
             border-radius: 5px;
+            font-size: 18px;
             @include center;
             background-color: $color-blue;
             color: white;

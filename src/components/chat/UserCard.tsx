@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory, withRouter } from 'react-router-dom'
+import { NavLink, useHistory, withRouter } from 'react-router-dom'
 
 const UserCard: React.FC<any> = (props) => {
     // const recipientID = props.location.pathname.split('=')[1]
@@ -9,9 +9,10 @@ const UserCard: React.FC<any> = (props) => {
 
     
     return (
-        <div
-            className={active ? "user-card active-user" : "user-card"}
-            // onClick={() =>  history.push(`/chat/messages/id=${props.user && props.user.id}`)}
+        <NavLink
+            activeClassName="active-user"
+            className={"user-card"}
+            to={`/chat/messages/id=${props.user && props.user.id}`}
             onClick={() =>{
                 props.getMessage(props.user.id)
             }
@@ -23,7 +24,7 @@ const UserCard: React.FC<any> = (props) => {
                 <div className="user-card__name">
                     {props.user && props.user.username}
                 </div>
-        </div>
+        </NavLink>
 
     )
 }

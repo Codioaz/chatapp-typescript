@@ -7,19 +7,19 @@ const InputText: React.FC<any> = (props) => {
     const [dropdown, setDropdown] = useState(true)
     const [textInput, setTextInput] = useState(null)
 
-    console.log(props.mesID);
+    console.log(props);
 
     return (
         <>
             {props.userMessageID !== props.userID.id ?
                 <div className={"left-mes"}>
-                    <span>YA</span>
+                    <span>{props.mesRecName && props.mesRecName.first_name[0].toUpperCase()}{props.mesRecName && props.mesRecName.last_name[0].toUpperCase()}</span>
 
                     <input type='text'
                         value={textInput!} onChange={(e: any) => setTextInput(e.target.value)}
-                        className={!dropdown ? 'editInput' : ' '} defaultValue={props.mesBody} readOnly={true} />
+                        className={!dropdown ? 'editInput' : ' '} defaultValue={props.mesBody} readOnly={dropdown} />
 
-                    <div className="dropdown-mes">
+                    {/* <div className="dropdown-mes">
                         <button onClick={() => {
                             !dropdown && props.putMessage(
                                 {
@@ -37,8 +37,7 @@ const InputText: React.FC<any> = (props) => {
                         <button onClick={() => props.deleteMessage(props.mesID)}>
                             <RiDeleteBin5Line />
                         </button>
-
-                    </div>
+                    </div> */}
 
 
 
@@ -55,7 +54,7 @@ const InputText: React.FC<any> = (props) => {
                     <input type='text'
                         value={textInput!} onChange={(e: any) => setTextInput(e.target.value)}
                         className={!dropdown ? 'editInput' : ' '} defaultValue={props.mesBody} readOnly={props.dropdown} />
-                    <span>{props.userID.first_name[0]}{props.userID.last_name[0]}</span>
+                    <span>{props.userID.first_name[0].toUpperCase()}{props.userID.last_name[0].toUpperCase()}</span>
 
                     <div className="dropdown-mes">
                         <button onClick={() => {

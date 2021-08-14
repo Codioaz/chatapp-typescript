@@ -10,6 +10,8 @@ export const USERS_MESSAGE = 'USERS_MESSAGE';
 export const MESSAGE_ID_USER = 'MESSAGE_ID_USER';
 export const USERS_MESSAGE__POST = 'USERS_MESSAGE__POST';
 export const USERS_MESSAGE__DELETE = 'USERS_MESSAGE__DELETE';
+export const IS_LOADING = 'IS_LOADING';
+
 
 
 

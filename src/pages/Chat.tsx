@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import ChatContent from '../components/chat/ChatContent'
 import Container from '../components/layout/container'
+import Loading from '../components/ui/loading'
 import { checkToken } from '../store/action/auth'
-import { getUser, getUsers, getUsersSearch, getMessage, postMessage,deleteMessage,putMessage } from '../store/action/user'
+import { getUser, getUsers, getUsersSearch, getMessage, postMessage, deleteMessage, putMessage } from '../store/action/user'
 
 
 const Chat: React.FC = (props: any) => {
@@ -13,7 +14,7 @@ const Chat: React.FC = (props: any) => {
     const { user, users, messages, userMessageID } = props.state.usersInfo
     const recipientID = props.location.pathname.split('=')[1]
 
-    console.log(messages);
+    console.log(props.state.usersInfo.isLoading);
 
     useEffect(() => {
         authToken && props.checkToken(authToken);
@@ -25,19 +26,26 @@ const Chat: React.FC = (props: any) => {
         props.getMessage(recipientID)
 
     }, [recipientID])
+
+
+
     return (
-        <Container>
-            <ChatContent
-                userMessageID={userMessageID}
-                getMessage={props.getMessage}
-                message={messages}
-                getUsersSearch={props.getUsersSearch}
-                postMessage={props.postMessage}
-                deleteMessage={props.deleteMessage}
-                putMessage={props.putMessage}
-                userID={user}
-                users={users} />
-        </Container>
+        <>
+            {(!user || !users) && <Loading />}
+            <Container>
+                <ChatContent
+                    isLoading={props.state.usersInfo.isLoading }
+                    userMessageID={userMessageID}
+                    getMessage={props.getMessage}
+                    message={messages}
+                    getUsersSearch={props.getUsersSearch}
+                    postMessage={props.postMessage}
+                    deleteMessage={props.deleteMessage}
+                    putMessage={props.putMessage}
+                    userID={user}
+                    users={users} />
+            </Container>
+        </>
     )
 }
 const mapStateToProps = (state: any) => ({ state })

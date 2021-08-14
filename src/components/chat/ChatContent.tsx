@@ -7,7 +7,8 @@ const ChatContent: React.FC<any> = (props) => {
     return (
         <div className="chat-content">
             <UserList 
-                userID={props.userID} 
+                userID={props.userID}
+                isLoading={props.isLoading} 
                 getMessage={props.getMessage}  
                 getUsersSearch={props.getUsersSearch} users={props} />
             

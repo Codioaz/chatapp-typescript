@@ -33,8 +33,6 @@ export const getLoginAuth = (data: LoginRequestType) => (dispatch: any) => {
 
     baseURL.post('auth/login/', data)
         .then((resp) => {
-            console.log(resp)
-
             //write axios 
             baseURL.defaults.headers.common['Authorization'] = `Token ${resp.data.token}`;
 

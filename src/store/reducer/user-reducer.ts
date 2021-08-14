@@ -6,6 +6,7 @@ let initialState = {
     users: null,
     messages: [],
     userMessageID: null,
+    isLoading: false,
 
 }
 
@@ -33,7 +34,10 @@ export const userReduser = (state = initialState, action: any) => {
             return { ...state, messages: [...state.messages, action.payload] }
 
         case type.USERS_MESSAGE__DELETE:
-            return { ...state, messages: state.messages.filter((mes:any) => mes.id !== action.payload ) }
+            return { ...state, messages: state.messages.filter((mes: any) => mes.id !== action.payload) }
+
+        case type.IS_LOADING:
+            return { ...state, isLoading: action.payload }
 
         default:
             return state;
