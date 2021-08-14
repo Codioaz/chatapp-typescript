@@ -1,23 +1,26 @@
 import React, { useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { IoIosSend } from 'react-icons/io'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { UserMesType } from '../../interface/chat.model'
 
 import InputText from './InputText'
 
 
-const UserMessage: React.FC<any> = (props) => {
+const UserMessage: React.FC<UserMesType> = (props) => {
 
 
     const [text, setTextRange] = useState('')
+    const history = useHistory()
 
+    
     const handleSubmit = (data: object) => {
 
         const formData = {
             recipient: props.userMessageID,
             title: 'Mes',
             body: text,
-            user: props.userID.id,
+            user: props.user.id,
         }
 
         props.postMessage(formData)
@@ -26,26 +29,23 @@ const UserMessage: React.FC<any> = (props) => {
 
     return (
         <div className="messages-content">
-            {props.location.pathname !== '/chat'
+            {history.location.pathname !== '/chat'
                 ?
                 <>
                     <div className="messages-content__user">
                         <span className="userID">Chat: {props.userMessageID}</span>
                     </div>
                     <div className="messages-content__area">
-                        {props.message && props.message.map((mes: any,) => (
+                        {props.messages && props.messages.map((mes: any,) => (
                             <InputText
                                 mesID={mes.id}
-                                userID={props.userID}
+                                user={props.user}
                                 mesBody={mes.body}
                                 userMessageID={mes.user}
                                 putMessage={props.putMessage}
                                 deleteMessage={props.deleteMessage}
                                 mesRecName={mes.recipient}
                             />
-
-
-
                         ))}
 
                     </div>
@@ -71,4 +71,4 @@ const UserMessage: React.FC<any> = (props) => {
     )
 }
 
-export default withRouter(UserMessage)
+export default UserMessage

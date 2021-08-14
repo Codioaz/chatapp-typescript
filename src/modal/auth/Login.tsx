@@ -32,7 +32,6 @@ const Login: React.FC <LoginType> = (props) => {
                 validationSchema={UserLogin}
                 onSubmit={(values) => {
                     props.getLoginAuth(values)
-                    console.log(values);
                 }}>
 
 

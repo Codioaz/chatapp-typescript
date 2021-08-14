@@ -7,11 +7,10 @@ const InputText: React.FC<any> = (props) => {
     const [dropdown, setDropdown] = useState(true)
     const [textInput, setTextInput] = useState(null)
 
-    console.log(props);
 
     return (
         <>
-            {props.userMessageID !== props.userID.id ?
+            {props.userMessageID !== props.user.id ?
                 <div className={"left-mes"}>
                     <span>{props.mesRecName && props.mesRecName.first_name[0].toUpperCase()}{props.mesRecName && props.mesRecName.last_name[0].toUpperCase()}</span>
 
@@ -54,7 +53,7 @@ const InputText: React.FC<any> = (props) => {
                     <input type='text'
                         value={textInput!} onChange={(e: any) => setTextInput(e.target.value)}
                         className={!dropdown ? 'editInput' : ' '} defaultValue={props.mesBody} readOnly={props.dropdown} />
-                    <span>{props.userID.first_name[0].toUpperCase()}{props.userID.last_name[0].toUpperCase()}</span>
+                    <span>{props.user.first_name[0].toUpperCase()}{props.user.last_name[0].toUpperCase()}</span>
 
                     <div className="dropdown-mes">
                         <button onClick={() => {

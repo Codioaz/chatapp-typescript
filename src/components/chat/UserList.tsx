@@ -1,12 +1,12 @@
 import React from 'react'
 import { BsSearch } from 'react-icons/bs'
+import { UserListType } from '../../interface/chat.model'
 import Loading from '../ui/loading'
 import LoadingSearch from '../ui/loading-search'
 import UserCard from './UserCard'
 
-const UserList: React.FC<any> = (props) => {
+const UserList: React.FC<UserListType> = (props) => {
 
-    // console.log(props.userID);
 
     return (
         <div className="users-content">
@@ -21,7 +21,7 @@ const UserList: React.FC<any> = (props) => {
                 ? <LoadingSearch />
                 :
                 <div className="users-content__list">
-                    {props.users.users && props.userID && props.users.users.results.filter((users: any) => users.id !== props.userID.id).map((user: object) => <UserCard getMessage={props.getMessage} user={user} />)}
+                    {props.users  && props.users.results.filter((users: any) => users.id !== props.user.id).map((user:object ) => <UserCard getMessage={props.getMessage} user={user} />)}
 
                 </div>
             }

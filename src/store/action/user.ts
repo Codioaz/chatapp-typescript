@@ -9,7 +9,6 @@ export const getUser = () => (dispatch: any) => {
 
     baseURL.get('user/me/')
         .then((resp) => {
-            console.log(resp);
             dispatch({ type: type.USER_INFO, payload: resp.data })
         }
         )
@@ -20,7 +19,6 @@ export const getUsers = () => (dispatch: any) => {
 
     baseURL.get('user/list/')
         .then((resp) => {
-            console.log(resp);
             dispatch({ type: type.USERS_INFO, payload: resp.data })
         }
         )

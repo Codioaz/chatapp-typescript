@@ -8,13 +8,12 @@ import { checkToken } from '../store/action/auth'
 import { getUser, getUsers, getUsersSearch, getMessage, postMessage, deleteMessage, putMessage } from '../store/action/user'
 
 
-const Chat: React.FC = (props: any) => {
+const Chat: React.FC<any> = (props: any) => {
 
     const { authToken } = props.state.auth
     const { user, users, messages, userMessageID } = props.state.usersInfo
     const recipientID = props.location.pathname.split('=')[1]
 
-    console.log(props.state.usersInfo.isLoading);
 
     useEffect(() => {
         authToken && props.checkToken(authToken);
@@ -37,12 +36,12 @@ const Chat: React.FC = (props: any) => {
                     isLoading={props.state.usersInfo.isLoading }
                     userMessageID={userMessageID}
                     getMessage={props.getMessage}
-                    message={messages}
+                    messages={messages}
                     getUsersSearch={props.getUsersSearch}
                     postMessage={props.postMessage}
                     deleteMessage={props.deleteMessage}
                     putMessage={props.putMessage}
-                    userID={user}
+                    user={user}
                     users={users} />
             </Container>
         </>
